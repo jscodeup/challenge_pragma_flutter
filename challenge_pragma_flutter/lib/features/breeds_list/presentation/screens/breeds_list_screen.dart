@@ -1,5 +1,6 @@
 import 'package:cat_breeds_app/di/injection.dart';
 import 'package:cat_breeds_app/features/breeds_list/presentation/viewmodels/breeds_list_viewmodel.dart';
+import 'package:cat_breeds_app/features/breeds_list/presentation/widgets/breed_list_item.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -20,9 +21,20 @@ class BreedsListScreen extends StatelessWidget {
               return const Center(child: CircularProgressIndicator());
             } else if (viewModel.error != null) {
               return Center(
-                child: Text(
-                  'Error: ${viewModel.error}',
-                  style: const TextStyle(color: Colors.red),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Error: ${viewModel.error}',
+                      style: const TextStyle(color: Colors.red),
+                      textAlign: TextAlign.center,
+                    ),
+                    const SizedBox(height: 16),
+                    ElevatedButton(
+                      onPressed: () => viewModel.getBreeds(),
+                      child: const Text('Reintentar'),
+                    ),
+                  ],
                 ),
               );
             } else if (viewModel.breeds.isEmpty) {
@@ -34,9 +46,11 @@ class BreedsListScreen extends StatelessWidget {
                 itemCount: viewModel.breeds.length,
                 itemBuilder: (context, index) {
                   final breed = viewModel.breeds[index];
-                  return ListTile(
-                    title: Text(breed.name),
-                    subtitle: Text(breed.origin),
+                  return BreedListItem(
+                    breed: breed,
+                    onTap: () {
+                      // Navegación implementada más adelante
+                    },
                   );
                 },
               );
