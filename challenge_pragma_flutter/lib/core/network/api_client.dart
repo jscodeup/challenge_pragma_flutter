@@ -1,7 +1,7 @@
 import 'dart:convert';
+import 'package:cat_breeds_app/config/constants.dart';
+import 'package:cat_breeds_app/core/error/exceptions.dart';
 import 'package:http/http.dart' as http;
-import '../../config/constants.dart';
-import '../error/exceptions.dart';
 
 class ApiClient {
   final http.Client httpClient;
