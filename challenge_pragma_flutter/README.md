@@ -18,8 +18,8 @@ Este proyecto fue desarrollado como parte de un desafío técnico para Pragma. L
 
 ## Tecnologías utilizadas
 
-- Flutter 3.10.x
-- Dart 3.0.x
+- Flutter 3.29.3
+- Dart 3.7.2
 - Provider para gestión de estado
 - GetIt para inyección de dependencias
 - HTTP para consumo de APIs
