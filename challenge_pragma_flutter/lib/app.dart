@@ -1,3 +1,5 @@
+import 'package:cat_breeds_app/config/routes.dart';
+import 'package:cat_breeds_app/config/theme.dart';
 import 'package:flutter/material.dart';
 
 class CatBreedsApp extends StatelessWidget {
@@ -7,11 +9,9 @@ class CatBreedsApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Cat Breeds',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: const HomePage(),
+      theme: appTheme,
+      onGenerateRoute: generateRoute,
+      initialRoute: AppRoutes.breedsList,
     );
   }
 }
