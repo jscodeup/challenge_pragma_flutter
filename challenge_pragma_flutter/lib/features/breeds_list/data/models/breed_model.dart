@@ -40,12 +40,15 @@ class BreedModel {
   });
 
   factory BreedModel.fromJson(Map<String, dynamic> json) {
+    String imageUrl =
+        'https://cdn2.thecatapi.com/images/${json['reference_image_id']}.jpg';
+
     return BreedModel(
       id: json['id'],
       name: json['name'],
       origin: json['origin'],
       intelligence: json['intelligence'],
-      imageUrl: json['image'] != null ? json['image']['url'] : null,
+      imageUrl: imageUrl,
       description: json['description'],
       adaptability: json['adaptability'],
       lifeSpan: json['life_span'],
