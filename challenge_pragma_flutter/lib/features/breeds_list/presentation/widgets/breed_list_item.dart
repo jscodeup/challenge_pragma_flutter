@@ -1,4 +1,5 @@
 import 'package:cat_breeds_app/features/breeds_list/data/models/breed_model.dart';
+import 'package:cat_breeds_app/features/breeds_list/presentation/widgets/intelligence_indicator.dart';
 import 'package:flutter/material.dart';
 
 class BreedListItem extends StatelessWidget {
@@ -24,15 +25,18 @@ class BreedListItem extends StatelessWidget {
               if (breed.imageUrl != null)
                 ClipRRect(
                   borderRadius: BorderRadius.circular(8),
-                  child: Image.network(
-                    breed.imageUrl!,
-                    width: 80,
-                    height: 80,
-                    fit: BoxFit.cover,
-                    errorBuilder: (_, __, ___) => const SizedBox(
+                  child: Hero(
+                    tag: 'breed_image_${breed.id}',
+                    child: Image.network(
+                      breed.imageUrl!,
                       width: 80,
                       height: 80,
-                      child: Icon(Icons.image_not_supported),
+                      fit: BoxFit.cover,
+                      errorBuilder: (_, __, ___) => const SizedBox(
+                        width: 80,
+                        height: 80,
+                        child: Icon(Icons.image_not_supported),
+                      ),
                     ),
                   ),
                 )
@@ -61,7 +65,7 @@ class BreedListItem extends StatelessWidget {
                     const SizedBox(height: 4),
                     Text('Origen: ${breed.origin}'),
                     const SizedBox(height: 4),
-                    Text('Inteligencia: ${breed.intelligence}/5'),
+                    IntelligenceIndicator(level: breed.intelligence),
                   ],
                 ),
               ),

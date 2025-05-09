@@ -1,3 +1,4 @@
+import 'package:cat_breeds_app/config/routes.dart';
 import 'package:cat_breeds_app/di/injection.dart';
 import 'package:cat_breeds_app/features/breeds_list/presentation/viewmodels/breeds_list_viewmodel.dart';
 import 'package:cat_breeds_app/features/breeds_list/presentation/widgets/breed_list_item.dart';
@@ -88,9 +89,11 @@ class _BreedsListScreenState extends State<BreedsListScreen> {
                             final breed = filteredBreeds[index];
                             return BreedListItem(
                               breed: breed,
-                              onTap: () {
-                                // Navegación implementada más adelante
-                              },
+                              onTap: () => Navigator.pushNamed(
+                                context,
+                                AppRoutes.breedDetails,
+                                arguments: breed.id,
+                              ),
                             );
                           },
                         ),
